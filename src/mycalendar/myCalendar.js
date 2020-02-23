@@ -3,11 +3,10 @@ import './myCalendar.scss';
 import classNames from 'classnames';
 import Calendar from './components/calendar';
 import { creatCalendarTable } from './utils/util';
-import moment from 'moment';
 
 export default function MyCalendar(props) {
   const [calendarTable, setCalendarTable] = useState([]);
-  let year = 0;
+  let year = '';
 
   return (
     <div className={classNames('my_calendar')}>
@@ -23,18 +22,9 @@ export default function MyCalendar(props) {
         const table = creatCalendarTable(year);
         setCalendarTable(table);
       }}>SHOW</button>
-      <div className={classNames('calendar_table')}>
-        {
-          calendarTable.map((calendar, index) => {
-            return (
-              <Calendar
-                key={index}
-                calendar={calendar}
-              />
-            )
-          })
-        }
-      </div>
+      <Calendar
+        calendarTable={calendarTable}
+      />
     </div>
   );
 }

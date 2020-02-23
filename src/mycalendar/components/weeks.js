@@ -8,9 +8,9 @@ export default function Weeks(props) {
   const { weeks, month } = props;
   const now = useMemo(() => moment().format('YYYY-M-DD'), []);
   const renderWeeksHeader = () => {
-    return weekHeaders.map((head) => {
+    return weekHeaders.map((head, index) => {
       return (
-        <td key={head} align='center'>
+        <td key={index} align='center'>
           <div
             className={classNames('week_item')}>
               {head}
