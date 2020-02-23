@@ -13,8 +13,8 @@
   width: $width;
 }
 
-@mixin table_item_selected {
-  background: #db3d44;
+@mixin table_item_heighlight {
+  background: #0066FF;
   border-radius: 100%;
 }
 
@@ -28,12 +28,6 @@
   input {
     text-indent: 10px;
   }
-}
-
-.input_icon {
-  position: absolute; 
-  left: 5px;
-  top: calc(50% - 0.5em);
 }
 
 .calendar_table {
@@ -97,4 +91,9 @@
   @media all and (max-width: 480px) {
     @include table_item(40px, 40px);
   }
+}
+
+.week_item_highlight {
+  @extend .week_item;
+  @include table_item_heighlight;
 }

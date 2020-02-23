@@ -34,14 +34,17 @@ export default function Weeks(props) {
           columnHeight={50}
           renderComponent={(week) => {
             const date = `${week.year}-${week.month}-${week.day}`;
-            const fontColor = monthNameTable[week.month - 1] === month
-              ? (now === date ? '#db3d44' : '#000') : '#BEBEBE';
+            const isToday = date === now;
+            const fontColor = isToday
+              ? '#fff' : monthNameTable[week.month - 1] === month
+              ? '#000' : '#BEBEBE';
+
             return (
               <div
                 style={{
                   color: fontColor
                 }}
-                className={classNames('week_item')}>
+                className={classNames(isToday ? 'week_item_highlight' : 'week_item')}>
                 {week.day}
               </div>
             );
