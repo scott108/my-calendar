@@ -68,7 +68,7 @@ const creatCalendar = (year, month) => {
   const days = getDays(year, month);
   const beginWeek = getWeek(year, month, 1);
   let indexOffset = beginWeek;
-  let canlanderTable = { currentMonth: monthNameTable[month - 1] };
+  let canlanderTable = { currentYear: year, currentMonth: monthNameTable[month - 1] };
   let weeks = [];
   let week = 0;
   let day = 1;

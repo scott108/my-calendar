@@ -1,6 +1,7 @@
 import { creatCalendar } from '../../src/mycalendar/utils/util';
 
 const expects = {
+  currentYear: 2007,
   currentMonth: 'Dec',
   weeks: [ { year: 2007, month: 11, day: 25, week: 0 },
   { year: 2007, month: 11, day: 26, week: 1 },
