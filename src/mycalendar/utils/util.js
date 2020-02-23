@@ -1,7 +1,7 @@
-const weekHeaders = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+const weekHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const monthNameTable = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
 ]
 const daysOfMothTable = {
   1: 31, 2: (year) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0? 29 : 28,
@@ -112,7 +112,7 @@ const creatCalendar = (year, month) => {
 const creatCalendarTable = (year) => {
   const calendarTable = [];
   for(let month = 1; month <= 12; month++) {
-    const calendar = creatCalendar(year, month);
+    const calendar = creatCalendar(parseInt(year), month);
     calendarTable.push(calendar);
   }
   return calendarTable;
@@ -122,4 +122,5 @@ export {
   creatCalendar,
   weekHeaders,
   creatCalendarTable,
+  monthNameTable,
 }

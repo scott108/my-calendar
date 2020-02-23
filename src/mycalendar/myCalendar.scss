@@ -1,0 +1,100 @@
+@mixin flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+}
+
+@mixin table_item($height, $width) {
+  @include flexbox;
+  justify-content: center;
+  align-items: center;
+  height: $height;
+  width: $width;
+}
+
+@mixin table_item_selected {
+  background: #db3d44;
+  border-radius: 100%;
+}
+
+.calendar_input {
+  width: 300px;
+}
+
+.my_calendar {
+  position: relative;
+  display: inline-block;
+  input {
+    text-indent: 10px;
+  }
+}
+
+.input_icon {
+  position: absolute; 
+  left: 5px;
+  top: calc(50% - 0.5em);
+}
+
+.calendar_table {
+  @include flexbox;
+  flex-wrap: wrap;
+}
+
+.calendar {
+  @include flexbox;
+  height: auto;
+  background: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  @media all and (min-width: 960px) {
+    width: 400px;
+    font-size: 1.5em;
+    padding: 20px;
+  }
+  @media all and (min-width: 760px) and (max-width: 959px) {
+    width: 380px;
+    font-size: 1.5em;
+    padding: 20px;
+  }
+  @media all and (min-width: 480px) and (max-width: 759px) {
+    width: 340px;
+    font-size: 1.3em;
+    padding: 10px;
+  }
+  @media all and (max-width: 480px) {
+    width: 300px;
+    font-size: 1.2em;
+    padding: 5px;
+  }
+  .title {
+    @include flexbox;
+    width: 90%;
+    height: auto;
+  }
+  .arrow_btn {
+    background: transparent;
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.week_item {
+  @media all and (min-width: 960px) {
+    @include table_item(50px, 50px);
+  }
+  @media all and (min-width: 760px) and (max-width: 959px) {
+    @include table_item(40px, 40px);
+  }
+  @media all and (min-width: 480px) and (max-width: 759px) {
+    @include table_item(40px, 40px);
+  }
+  @media all and (max-width: 480px) {
+    @include table_item(40px, 40px);
+  }
+}
