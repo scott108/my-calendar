@@ -3,24 +3,37 @@ import './myCalendar.scss';
 import classNames from 'classnames';
 import Calendar from './components/calendar';
 import { creatCalendarTable } from './utils/util';
+import TextField from '@material-ui/core/TextField';
 
 export default function MyCalendar(props) {
   const [calendarTable, setCalendarTable] = useState([]);
+  const [isValid, setValid] = useState(true);
   let year = '';
 
   return (
     <div className={classNames('my_calendar')}>
-      <input
-        type="text"
+      <TextField
+        InputProps={{
+          className: classNames('calendar_input'),
+        }}
+        InputLabelProps={{
+          shrink: true,
+        }}
         onChange={(e) => {
           year = e.target.value;
         }}
-        className={classNames('calendar_input')}
-        aria-label="Small"
-        aria-describedby="inputGroup-sizing-sm"></input>
+        label='Year'
+        variant='outlined'
+        error={!isValid}
+        helperText={!isValid && 'Invalid year'} />
       <button onClick={() => {
-        const table = creatCalendarTable(year);
-        setCalendarTable(table);
+        if(year.match(/^[0-9]+$/) && parseInt(year) > 0 && parseInt(year) <= 9999) {
+          const table = creatCalendarTable(year);
+          setCalendarTable(table);
+          setValid(true);
+        } else {
+          setValid(false);
+        }
       }}>SHOW</button>
       <Calendar
         calendarTable={calendarTable}
